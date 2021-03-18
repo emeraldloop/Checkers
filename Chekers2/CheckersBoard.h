@@ -10,5 +10,6 @@ public:
 	virtual ~CheckersBoard();
 	void Show();
 	void SetCell(int xpos, int ypos, CellType ct);
+	bool CheckLegal1(int xpos, int ypos);
 };
 

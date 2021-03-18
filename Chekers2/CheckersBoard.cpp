@@ -67,7 +67,6 @@ void CheckersBoard::Show()
 				cout << "W";
 				break;
 			}
-			cout << "";
 		}
 		cout << endl;
 	}
@@ -76,4 +75,11 @@ void CheckersBoard::Show()
 void CheckersBoard::SetCell(int xpos, int ypos, CellType ct)
 {
 	cells[ypos][xpos] = ct;
+}
+
+bool CheckersBoard::CheckLegal1(int xpos, int ypos)
+{
+	if ((xpos < 0) || (xpos > boardsize - 1) || (ypos < 0) || (ypos > boardsize - 1))
+		return false;
+	return (cells[ypos][xpos] == CellType_Available);
 }
