@@ -11,11 +11,11 @@ CheckersBoard::CheckersBoard()
 	for (unsigned int i = 0; i < size; i++) {
 		for (unsigned int j = 0; j < size; j++) {
 			if (i % 2 == 1)
-				if (j % 2 == 1) cells[i][j] = CellType_Available;
-				else cells[i][j] = CellType_NotAvailable;
-			else
 				if (j % 2 == 1) cells[i][j] = CellType_NotAvailable;
 				else cells[i][j] = CellType_Available;
+			else
+				if (j % 2 == 1) cells[i][j] = CellType_Available;
+				else cells[i][j] = CellType_NotAvailable;
 			if (((i == 0) || (i == 2)) && (j == 1 || j == 3 || j == 5 || j == 7)) // тут я задаю начальную расстановку
 				cells[i][j] = CellType_Black;
 			if ((i == 1) && (j == 0 || j == 2 || j == 4 || j == 6))
@@ -55,10 +55,10 @@ void CheckersBoard::Show()
 			switch (cells[i][j])
 			{
 			case CellType_Available:
-				cout << (char) 219;
+				cout << (char) 176;
 				break;
 			case CellType_NotAvailable:
-				cout << (char) 176;
+				cout << (char) 219;
 				break;
 			case CellType_Black:
 				cout << "B";
@@ -72,14 +72,15 @@ void CheckersBoard::Show()
 	}
 }
 
-void CheckersBoard::SetCell(int xpos, int ypos, CellType ct)
+void CheckersBoard::SetCell(int xpos1, int ypos1, int xpos2, int ypos2, CellType ct)
 {
-	cells[ypos][xpos] = ct;
+	cells[xpos1][ypos1] = CellType_Available;
+	cells[xpos2][ypos2] = ct;
 }
 
 bool CheckersBoard::CheckLegal1(int xpos, int ypos)
 {
 	if ((xpos < 0) || (xpos > boardsize - 1) || (ypos < 0) || (ypos > boardsize - 1))
 		return false;
-	return (cells[ypos][xpos] == CellType_Available);
+	return (true);
 }

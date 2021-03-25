@@ -30,16 +30,16 @@ bool CheckersPlayer::MakeMove()
 	cin >> col1;
 	col1--;
 	
-	/* cout << "Setting cell \nSet column  : ";
+	cout << "Setting cell \nSet column  : ";
 	cin >> row2;
 	row2--;
 	cout << "Set row: ";
 	cin >> col2;
-	col2--; */
+	col2--; 
 
 	if (this->board->CheckLegal1(col1, row1))
 	{
-		this->board->SetCell(col1, row1, this->cellType);
+		this->board->SetCell(col1, row1,col2,row2, this->cellType);
 		return true;
 	}
 	return false;
