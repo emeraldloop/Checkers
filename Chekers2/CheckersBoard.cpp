@@ -11,19 +11,19 @@ CheckersBoard::CheckersBoard()
 	for (unsigned int i = 0; i < size; i++) {
 		for (unsigned int j = 0; j < size; j++) {
 			if (i % 2 == 1)
-				if (j % 2 == 1) cells[i][j] = CellType_NotAvailable;
-				else cells[i][j] = CellType_Available;
-			else
 				if (j % 2 == 1) cells[i][j] = CellType_Available;
 				else cells[i][j] = CellType_NotAvailable;
-			if (((i == 0) || (i == 2)) && (j == 0 || j == 2 || j == 4 || j == 6))
+			else
+				if (j % 2 == 1) cells[i][j] = CellType_NotAvailable;
+				else cells[i][j] = CellType_Available;
+			if (((i == 0) || (i == 2)) && (j == 1 || j == 3 || j == 5 || j == 7)) // тут я задаю начальную расстановку
 				cells[i][j] = CellType_Black;
-			if ((i == 1) && (j == 1 || j == 3 || j == 5 || j == 7))
+			if ((i == 1) && (j == 0 || j == 2 || j == 4 || j == 6))
 				cells[i][j] = CellType_Black;
 
-			if (((i == 5) || (i == 7)) && (j == 1 || j == 3 || j == 5 || j == 7))
+			if (((i == 5) || (i == 7)) && (j == 0 || j == 2 || j == 4 || j == 6))
 				cells[i][j] = CellType_White;
-			if ((i == 6) && (j == 0 || j == 2 || j == 4 || j == 6))
+			if ((i == 6) && (j == 1 || j == 3 || j == 5 || j == 7))
 				cells[i][j] = CellType_White;
 		}
 	}
@@ -49,10 +49,10 @@ void CheckersBoard::Show()
 
 	for (unsigned int i = 0; i < boardsize; i++)
 	{
-		cout << boardsize - i;
+		cout << i+1;
 		for (unsigned int j = 0; j < boardsize; j++)
 		{
-			switch (cells[7 - i][j])
+			switch (cells[i][j])
 			{
 			case CellType_Available:
 				cout << (char) 219;

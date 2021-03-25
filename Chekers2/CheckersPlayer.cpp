@@ -25,8 +25,10 @@ bool CheckersPlayer::MakeMove()
 	cout << "Player " << name << ",your turn " << endl;
 	cout << "Set column: ";
 	cin >> row;
+	row--;
 	cout << "Set row: ";
 	cin >> col;
+	col--;
 
 	if (this->board->CheckLegal1(col, row))
 	{
