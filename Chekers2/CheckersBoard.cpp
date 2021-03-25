@@ -31,7 +31,7 @@ CheckersBoard::CheckersBoard()
 
 CheckersBoard::~CheckersBoard()
 {
-	for (unsigned int i = 0; i < boardsize; i++)
+	for ( int i = 0; i < boardsize; i++)
 		delete[]cells[i];
 	delete[]cells;
 }
@@ -41,16 +41,16 @@ void CheckersBoard::Show()
 
 	setlocale(LC_ALL, ".866");
 	cout << " ";
-	for (unsigned int j = 0, b = 65; j < boardsize; j++)
+	for ( int j = 0, b = 65; j < boardsize; j++)
 	{
 		cout << (char)b++;
 	}
 	cout << endl;
 
-	for (unsigned int i = 0; i < boardsize; i++)
+	for ( int i = 0; i < boardsize; i++)
 	{
 		cout << i+1;
-		for (unsigned int j = 0; j < boardsize; j++)
+		for ( int j = 0; j < boardsize; j++)
 		{
 			switch (cells[i][j])
 			{

@@ -21,18 +21,25 @@ void CheckersPlayer::SetBoard(CheckersBoard* board)
 
 bool CheckersPlayer::MakeMove()
 {
-	unsigned int row, col;
+	unsigned int row1, col1,row2,col2;// 1 - ввод шашки, которой будут ходить 2 - ввод клетки куда шашка сходит
 	cout << "Player " << name << ",your turn " << endl;
-	cout << "Set column: ";
-	cin >> row;
-	row--;
+	cout << "Setting checker to move \nSet column  : ";
+	cin >> row1;
+	row1--;
 	cout << "Set row: ";
-	cin >> col;
-	col--;
+	cin >> col1;
+	col1--;
+	
+	/* cout << "Setting cell \nSet column  : ";
+	cin >> row2;
+	row2--;
+	cout << "Set row: ";
+	cin >> col2;
+	col2--; */
 
-	if (this->board->CheckLegal1(col, row))
+	if (this->board->CheckLegal1(col1, row1))
 	{
-		this->board->SetCell(col, row, this->cellType);
+		this->board->SetCell(col1, row1, this->cellType);
 		return true;
 	}
 	return false;

@@ -22,7 +22,7 @@ bool CheckersManager::Init()
 	player1->SetupPlayer(playerName, CellType_Black);
 	cout << "Write white player's name ";
 	getline(cin, playerName);
-	player2->SetupPlayer(playerName, CellType_Black);
+	player2->SetupPlayer(playerName, CellType_White);
 	player1->SetBoard(this->board);
 	player2->SetBoard(this->board);
 	currentPlayer = player1;
