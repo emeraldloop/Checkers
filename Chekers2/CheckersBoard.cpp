@@ -93,16 +93,36 @@ void CheckersBoard::SetCell(int xpos1, int ypos1, int xpos2, int ypos2, CellType
 		cells[xpos1 - 1][ypos1 + 1] = CellType_Available;
 	}
 	
-	
-	
-	
 	cells[xpos1][ypos1] = CellType_Available;
 	cells[xpos2][ypos2] = ct; 
 }
 
-bool CheckersBoard::CheckLegal1(int xpos, int ypos)
+bool CheckersBoard::CheckLegal1(int xpos1, int ypos1, int xpos2, int ypos2,CellType ct)
 {
-	if ((xpos < 0) || (xpos > boardsize - 1) || (ypos < 0) || (ypos > boardsize - 1))
+	if ((xpos1 < 0) || (xpos1 > boardsize - 1) || (ypos1 < 0) || (ypos1 > boardsize - 1)) // ограничения доски
 		return false;
-	return (true);
+	if ((xpos2 < 0) || (xpos2 > boardsize - 1) || (ypos2 < 0) || (ypos2 > boardsize - 1))
+		return false;
+	if ((cells[xpos1][ypos1] != ct) || (cells[xpos2][ypos2] !=CellType_Available)) // выбрана шашка не того игрока или ход в недоступную клетку
+		return false;
+
+	if ((cells[xpos1 + 1][ypos1 + 1] != ct) && (cells[xpos1 + 1][ypos1 + 1] != CellType_Available) && (xpos2 == xpos1 + 2) && (ypos2 == ypos1 + 2)  ) //если "наискасок" есть вражеская шашка - её можно съесть 
+		return true;
+	if ((cells[xpos1 + 1][ypos1 - 1] != ct) && (cells[xpos1 + 1][ypos1 - 1] != CellType_Available) && (xpos2 == xpos1 + 2) && (ypos2 == ypos1 - 2))
+		return true;
+	if ((cells[xpos1 - 1][ypos1 - 1] != ct) && (cells[xpos1 - 1][ypos1 - 1] != CellType_Available) && (xpos2 == xpos1 - 2) && (ypos2 == ypos1 - 2))
+		return true;
+	if ((cells[xpos1 - 1][ypos1 + 1] != ct) && (cells[xpos1 - 1][ypos1 + 1] != CellType_Available) && (xpos2 == xpos1 - 2) && (ypos2 == ypos1 + 2))
+		return true;
+
+
+
+	if ((xpos2 > xpos1 + 1) && (xpos2 < xpos1 - 1) && (ypos2 > ypos1 + 1) && (ypos2 < ypos1 - 1)) // движение не дальше чем на +1
+		return false;
+	
+
+
+	
+
+	return true;
 }
