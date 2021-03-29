@@ -74,15 +74,24 @@ void CheckersBoard::Show()
 
 void CheckersBoard::SetCell(int xpos1, int ypos1, int xpos2, int ypos2, CellType ct)
 {
-	if ((xpos2 == xpos1 + 2) && (ypos2 == ypos1 + 2) &&(cells[xpos1+1][ypos1+1]!=ct)  ) {
+	if ((xpos2 == xpos1 + 2) && (ypos2 == ypos1 + 2) && (cells[xpos1+1][ypos1+1]!=ct) && (cells[xpos1 + 1][ypos1 + 1] != CellType_Available) ) {
 
-		/*cells[xpos1][ypos1] = CellType_Available;
-		cells[xpos2][ypos2] = ct; */
-		cells[xpos1 + 1][ypos1 + 1] = ct;
+		cells[xpos1 + 1][ypos1 + 1] = CellType_Available;
 	}
 	
-	
-	
+	if ((xpos2 == xpos1 + 2) && (ypos2 == ypos1 - 2) && (cells[xpos1 + 1][ypos1 - 1] != ct) && (cells[xpos1 + 1][ypos1 - 1] != CellType_Available)) {
+
+		cells[xpos1 + 1][ypos1 - 1] = CellType_Available;
+	}
+	if ((xpos2 == xpos1 - 2) && (ypos2 == ypos1 - 2) && (cells[xpos1 - 1][ypos1 - 1] != ct) && (cells[xpos1 - 1][ypos1 - 1] != CellType_Available)) {
+
+		cells[xpos1 - 1][ypos1 - 1] = CellType_Available;
+	}
+
+	if ((xpos2 == xpos1 - 2) && (ypos2 == ypos1 + 2) && (cells[xpos1 - 1][ypos1 + 1] != ct) && (cells[xpos1 - 1][ypos1 + 1] != CellType_Available)) {
+
+		cells[xpos1 - 1][ypos1 + 1] = CellType_Available;
+	}
 	
 	
 	
