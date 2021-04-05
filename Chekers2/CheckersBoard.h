@@ -5,7 +5,6 @@ class CheckersBoard
 private:
 	int boardsize;
 	CellType** cells;
-	
 public:
 	CheckersBoard();
 	virtual ~CheckersBoard();
@@ -14,6 +13,6 @@ public:
 	void SetCell(int xpos1, int ypos1, int xpos2, int ypos2, CellType ct);
 	void SetCell2(CellType ct);
 	bool CheckLegal1(int xpos1, int ypos1, int xpos2, int ypos2,CellType ct);
-	//bool CheckLegalEat4PC(int ipos, int jpos, CellType ct);
+	bool CheckLegalEat4PC(int ipos, int jpos, CellType ct);
 };
 
